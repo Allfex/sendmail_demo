@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>${ENV, var="JOB_NAME"}-No${BUILD_NUMBER}build log</title>
+</head>
+
+<body leftmargin="8" marginwidth="0" topmargin="8" marginheight="4"
+      offset="0">
+<table width="95%" cellpadding="0" cellspacing="0"  style="font-size: 11pt; font-family: Tahoma, Arial, Helvetica, sans-serif">
+    <tr>
+        <td>Hello, the ${PROJECT_NAME }project build infomation as follow</td>
+    </tr>
+    <tr>
+        <td><br />
+            <b><font color="#0B610B">build info</font></b>
+            <hr size="2" width="100%" align="center" /></td>
+    </tr>
+    <tr>
+        <td>
+            <ul>
+                <li>PROJECT_NAME:${PROJECT_NAME}</li>
+                <li>BUILD_NO:No_${BUILD_NUMBER}</li>
+                <li>CAUSE:${CAUSE}</li>
+                <li>STATUS:${BUILD_STATUS}</li>
+                <li>BUILD_LOG:<a href="${BUILD_URL}console">${BUILD_URL}console</a></li>
+                <li>BUILD_URL:<a href="${BUILD_URL}">${BUILD_URL}</a></li>
+                <li>WORKSPACE:<a href="${PROJECT_URL}ws">${PROJECT_URL}ws</a></li>
+                <li>PROJECT_URL:<a href="${PROJECT_URL}">${PROJECT_URL}</a></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td><b><font color="#0B610B">History log:</font></b>
+            <hr size="2" width="100%" align="center" /></td>
+    </tr>
+    <tr>
+        <td>
+            ${CHANGES_SINCE_LAST_SUCCESS,reverse=true, format="Changes for Build #%n:<br />%c<br />",showPaths=true,changesFormat="<pre>[%a]<br />%m</pre>",pathFormat="&nbsp;&nbsp;&nbsp;&nbsp;%p"}
+        </td>
+    </tr>
+</table>
+</body>
+</html>
